@@ -1,16 +1,16 @@
 const path = require('path')
-const webpack = require('webpack')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './build/module/index.js',
+  entry: './build/renderer/index.js',
   devtool: 'inline-source-map',
   target: 'electron-renderer',
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: [/node_modules/, /ipc/],
+        exclude: [/node_modules/],
         use: {
           loader: 'babel-loader',
           options: {
@@ -46,8 +46,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'resources/fonts/',
-              publicPath: 'build/js/resources/fonts'
+              outputPath: 'fonts/',
             },
           },
         ],
@@ -58,7 +57,12 @@ module.exports = {
     extensions: ['.js'],
   },
   output: {
-    filename: 'index.js',
-    path: path.resolve('build', 'js'),
+    filename: 'bundle.js',
+    path: path.resolve('build', 'renderer', 'static'),
   },
+  plugins: [
+    new CopyPlugin({
+      patterns: [{ from: 'static', to: '.' }],
+    }),
+  ],
 }
