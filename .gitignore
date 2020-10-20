@@ -50,3 +50,5 @@ npm-debug.log.*
 *.scss.d.ts
 
 tsconfig.tsbuildinfo
+.env
+dev-app-update.yml

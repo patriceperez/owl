@@ -4,7 +4,7 @@ import { IpcMainEvent, Notification, NotificationConstructorOptions } from 'elec
 class Notify implements IpcChannelInterface {
     getName(): string { return 'notify' }
 
-    handle(event: IpcMainEvent, options?: NotificationConstructorOptions): void {
+    async handle(event: IpcMainEvent, options?: NotificationConstructorOptions): Promise<void> {
         new Notification(options).show()
     }
 }

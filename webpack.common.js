@@ -1,13 +1,19 @@
 const path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
-  entry: './build/renderer/index.js',
+  entry: './src/renderer/index.tsx',
   devtool: 'inline-source-map',
   target: 'electron-renderer',
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: '/node_modules/',
+      },
       {
         test: /\.js$/,
         exclude: [/node_modules/],
@@ -54,7 +60,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js'],
+    extensions: ['.js', '.ts', '.tsx'],
   },
   output: {
     filename: 'bundle.js',
@@ -63,6 +69,9 @@ module.exports = {
   plugins: [
     new CopyPlugin({
       patterns: [{ from: 'static', to: '.' }],
+    }),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'static', 'index.html'),
     }),
   ],
 }

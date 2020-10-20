@@ -1,6 +1,12 @@
 import { BrowserWindow, app, ipcMain } from 'electron'
-import path from 'path'
+import { autoUpdater } from "electron-updater"
+import * as log from 'electron-log'
 import { channels } from './main/channels'
+import path from 'path'
+import 'sharp'
+
+log.transports.file.level = 'debug'
+autoUpdater.logger = log
 
 app.whenReady().then(createWindow)
 
@@ -18,9 +24,15 @@ function createWindow() {
     },
   })
 
+  if (process.env.NODE_ENV !== 'development') {
+    win.removeMenu()
+  }
+
   win.loadFile(path.resolve(__dirname, 'renderer', 'static', 'index.html'))
 
   channels.forEach((channel) => ipcMain.on(channel.getName(), channel.handle))
+
+  autoUpdater.checkForUpdatesAndNotify()
 }
 
 if (process.env.NODE_ENV === 'development') {
