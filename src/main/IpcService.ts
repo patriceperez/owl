@@ -1,8 +1,5 @@
-import { NotificationConstructorOptions } from "electron"
-
-interface BackBone {
-  notify: (data: NotificationConstructorOptions) => Promise<void>
-  sharpTest: () => Promise<void>
+interface IpcService {
+  call(action: String, data?: any): Promise<any>
 }
 
-export default (window as any).backbone as BackBone 
+export default (window as any).backbone as IpcService 

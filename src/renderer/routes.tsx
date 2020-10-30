@@ -6,11 +6,15 @@ export const routes: Array<RouteProps> = [
   {
     path: '/',
     component: HomePage,
-    exact: true
+    exact: true,
   },
   {
     path: '/prepare',
     component: PreparePage,
-    exact: true
+    exact: true,
+  },
+  {
+    path: '*',
+    component: HomePage,
   },
 ]

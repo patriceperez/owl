@@ -1,16 +1,13 @@
 import React from 'react'
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-} from '@material-ui/core'
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
-import BorderColorIcon from '@material-ui/icons/BorderColor'
-import { Link } from 'react-router-dom'
+import { Divider, Drawer, List, Toolbar } from '@material-ui/core'
 import { ListItemLink } from './ListItemLink'
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
+
+import CollectionsIcon from '@material-ui/icons/Collections'
+import BurstModeIcon from '@material-ui/icons/BurstMode'
+import PhotoCameraIcon from '@material-ui/icons/PhotoCamera'
+import GetAppIcon from '@material-ui/icons/GetApp'
+import BackupIcon from '@material-ui/icons/Backup'
 
 const drawerWidth = 240
 
@@ -18,7 +15,6 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     drawer: {
       width: drawerWidth,
-      flexShrink: 0,
     },
     drawerPaper: {
       width: drawerWidth,
@@ -40,9 +36,30 @@ export const SideBar: React.FC = () => {
       <Toolbar />
       <List>
         <ListItemLink
+          to="/sets"
+          primary="Image Sets"
+          icon={<CollectionsIcon />}
+        />
+        <ListItemLink
+          to="/capture"
+          primary="Capture"
+          icon={<PhotoCameraIcon />}
+        />
+        <Divider />
+        <ListItemLink
+          to="/import"
+          primary="Import"
+          icon={<GetAppIcon />}
+        />
+        <ListItemLink
           to="/prepare"
           primary="Prepare"
-          icon={<BorderColorIcon />}
+          icon={<BurstModeIcon />}
+        />
+        <ListItemLink
+          to="/export"
+          primary="Export"
+          icon={<BackupIcon />}
         />
       </List>
     </Drawer>

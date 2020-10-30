@@ -30,7 +30,7 @@ function createWindow() {
 
   win.loadFile(path.resolve(__dirname, 'renderer', 'static', 'index.html'))
 
-  channels.forEach((channel) => ipcMain.on(channel.getName(), channel.handle))
+  channels.forEach((channel) => ipcMain.handle(channel.getName(), channel.handle))
 
   autoUpdater.checkForUpdatesAndNotify()
 }

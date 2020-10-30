@@ -1,11 +1,11 @@
 import { IpcChannelInterface } from '../IpcChannelInterface'
-import { IpcMainEvent } from 'electron'
+import { IpcMainInvokeEvent } from 'electron'
 import sharp from 'sharp'
 
 class SharpTest implements IpcChannelInterface {
     getName(): string { return 'sharpTest' }
 
-    async handle(event: IpcMainEvent, options?: any): Promise<void> {
+    async handle(event: IpcMainInvokeEvent, options?: any): Promise<any> {
         const mask = await sharp("static/images/01.jpg").toColorspace("lch")
             .composite([{ input: "static/images/mask.jpg", blend: "difference" }])
             // .normalize().sharpen()

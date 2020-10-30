@@ -1,10 +1,10 @@
 import { IpcChannelInterface } from '../IpcChannelInterface'
-import { IpcMainEvent, Notification, NotificationConstructorOptions } from 'electron'
+import { IpcMainInvokeEvent, Notification, NotificationConstructorOptions } from 'electron'
 
 class Notify implements IpcChannelInterface {
     getName(): string { return 'notify' }
 
-    async handle(event: IpcMainEvent, options?: NotificationConstructorOptions): Promise<void> {
+    async handle(event: IpcMainInvokeEvent, options?: NotificationConstructorOptions): Promise<any> {
         new Notification(options).show()
     }
 }

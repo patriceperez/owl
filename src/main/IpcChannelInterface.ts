@@ -1,6 +1,6 @@
-import { IpcMainEvent } from 'electron'
+import { IpcMainInvokeEvent } from 'electron'
 
 export interface IpcChannelInterface {
     getName(): string
-    handle(event: IpcMainEvent, data: any): Promise<void>
+    handle(event: IpcMainInvokeEvent, data: any): Promise<any>
 }

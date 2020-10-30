@@ -43,6 +43,7 @@
   },
   "homepage": "https://github.com/patriceperez/owl#readme",
   "dependencies": {
+    "bluebird": "^3.7.2",
     "electron-log": "^4.2.4",
     "electron-updater": "^4.3.5",
     "glob": "^7.1.6",
@@ -54,6 +55,7 @@
     "@babel/preset-react": "^7.10.4",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@types/bluebird": "^3.5.33",
     "@types/electron": "^1.6.10",
     "@types/glob": "^7.1.3",
     "@types/react": "^16.9.50",

@@ -6,12 +6,7 @@ import {
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-
-interface ListItemLinkProps {
-  icon?: React.ReactElement
-  primary: string
-  to: string
-}
+import { ListItemLinkProps } from '../Types/ListItemLinkProps'
 
 export const ListItemLink: React.FC<ListItemLinkProps> = (props) => {
   const { icon, primary, to } = props
